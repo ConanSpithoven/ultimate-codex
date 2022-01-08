@@ -20,6 +20,7 @@ class CreateCreaturesTable extends Migration
             $table->string('name')->default("");
             $table->string('size')->default("");
             $table->string('type')->default("");
+            $table->string('alignment')->default("");
             $table->timestamps();
         });
     }

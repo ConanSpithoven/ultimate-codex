@@ -16,7 +16,7 @@ class CreatureController extends Controller
     {
         $data = Creature::latest()->paginate(5);
     
-        return view('Creatures.index',compact('data'))
+        return view('creatures.index',compact('data'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -27,7 +27,7 @@ class CreatureController extends Controller
      */
     public function create()
     {
-        return view('Creatures.create');
+        return view('creatures.create');
     }
 
     /**
@@ -39,13 +39,16 @@ class CreatureController extends Controller
     public function store(Request $request)
     {
          $request->validate([
-            'title' => 'required',
-            'description' => 'required',
+            'user_id' => 'required',
+            'name' => 'required',
+            'size' => 'required',
+            'type' => 'required',
+            'alignment' => 'required',
         ]);
     
         Creature::create($request->all());
      
-        return redirect()->route('Creatures.index')
+        return redirect()->route('creatures.index')
                         ->with('success','Creature created successfully.');
     }
 
@@ -57,7 +60,7 @@ class CreatureController extends Controller
      */
     public function show(Creature $creature)
     {
-        return view('Creatures.show',compact('Creature'));
+        return view('creatures.show',compact('Creature'));
     }
 
     /**
@@ -68,7 +71,7 @@ class CreatureController extends Controller
      */
     public function edit(Creature $creature)
     {
-        return view('Creatures.edit',compact('Creature'));
+        return view('creatures.edit',compact('Creature'));
     }
 
     /**
@@ -81,13 +84,16 @@ class CreatureController extends Controller
     public function update(Request $request, Creature $creature)
     {
         $request->validate([
-            'title' => 'required',
-            'description' => 'required',
+            'user_id' => 'required',
+            'name' => 'required',
+            'size' => 'required',
+            'type' => 'required',
+            'alignment' => 'required',
         ]);
     
         $post->update($request->all());
     
-        return redirect()->route('Creatures.index')
+        return redirect()->route('creatures.index')
                         ->with('success','Creature updated successfully');
     }
 
@@ -101,7 +107,7 @@ class CreatureController extends Controller
     {
         $post->delete();
     
-        return redirect()->route('Creatures.index')
+        return redirect()->route('creatures.index')
                         ->with('success','Creature deleted successfully');
     }
 }
