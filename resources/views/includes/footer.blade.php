@@ -1,1 +1,1 @@
-<div id="copyright text-right">A fan project to create a readable codex</div>
+<div class="footer" id="copyright text-right">A fan project to create a readable codex</div>

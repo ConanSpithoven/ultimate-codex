@@ -13,7 +13,7 @@
             <div id="main" class="row">
 
                 <!-- sidebar content -->
-                <div id="sidebar" class="col-md-4">
+                <div id="sidebar" class="col-md-2">
                     @include('includes.sidebar')
                 </div>
 
@@ -22,6 +22,8 @@
                     @yield('content')
                 </div>
 
+                <div class="col-md-2">
+                </div>
             </div>
 
             <footer class="row">
